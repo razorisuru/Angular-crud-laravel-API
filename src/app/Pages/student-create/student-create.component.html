@@ -1,0 +1,40 @@
+<div class="">
+
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h4>Create Student
+          <a routerLink="/students" class="btn btn-danger float-end">back</a>
+        </h4>
+      </div>
+      <div class="card-body">
+        <div *ngIf="isLoading; else elseForm">
+          <app-loader :title="loadingTitle" />
+        </div>
+        <ng-template #elseForm>
+          <form (ngSubmit)="saveStudent()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" [(ngModel)]="name" class="form-control" id="name" name="name">
+              <span class="text-danger" *ngIf="errors.name">{{errors.name}}</span>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" [(ngModel)]="email" class="form-control" id="email" name="email">
+              <span class="text-danger" *ngIf="errors.email">{{errors.email}}</span>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="text" [(ngModel)]="phone" class="form-control" id="phone" name="phone">
+              <span class="text-danger" *ngIf="errors.phone">{{errors.phone}}</span>
+            </div>
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
